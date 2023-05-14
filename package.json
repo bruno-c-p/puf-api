@@ -22,10 +22,15 @@
     "@commitlint/cli": "^12.0.1",
     "@commitlint/config-conventional": "^12.0.1",
     "husky": "^5.1.3",
-    "lint-staged": "^10.5.4"
+    "lint-staged": "^10.5.4",
+    "npm-run-all": "^4.1.5"
   },
   "scripts": {
     "test": "echo \"No tests specified\"",
-    "fix": "echo 123"
+    "fix": "run-s \"fix:* {@}\" --",
+    "fix:lint": "eslint --fix --no-error-on-unmatched-pattern",
+    "fix:format": "prettier --write",
+    "format": "yarn fix:format 'src/**/*.(js|ts|md|json)'",
+    "lint": "yarn fix:lint src/**/*.{js,ts,md,json}"
   }
 }
