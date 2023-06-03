@@ -8,6 +8,6 @@ app.use(bodyParser())
 app.use(router.routes())
 app.use(router.allowedMethods())
 
-app.listen(3000, () => {
-  console.log('server is running at http://localhost:3000')
+app.listen(process.env.SERVER_PORT, () => {
+  console.log(`Server listening on port ${process.env.SERVER_PORT}`)
 })
